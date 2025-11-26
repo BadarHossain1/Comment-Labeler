@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, memo } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface Comment {
@@ -20,17 +20,7 @@ export default function LabelPage() {
   const [error, setError] = useState<string>('');
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    const name = localStorage.getItem('annotatorName');
-    if (!name) {
-      router.push('/');
-      return;
-    }
-    setAnnotatorName(name);
-    fetchComments(name);
-  }, [router]);
-
-  const fetchComments = async (name: string) => {
+  const fetchComments = useCallback(async (name: string) => {
     try {
       setLoading(true);
       setError('');
@@ -49,9 +39,19 @@ export default function LabelPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const handleLabelSubmit = async (label: LabelType) => {
+  useEffect(() => {
+    const name = localStorage.getItem('annotatorName');
+    if (!name) {
+      router.push('/');
+      return;
+    }
+    setAnnotatorName(name);
+    fetchComments(name);
+  }, [router, fetchComments]);
+
+  const handleLabelSubmit = useCallback(async (label: LabelType) => {
     if (!comments[currentIndex] || submitting) return;
 
     try {
@@ -92,16 +92,12 @@ export default function LabelPage() {
     } finally {
       setSubmitting(false);
     }
-  };
+  }, [comments, currentIndex, submitting, annotatorName, fetchComments]);
 
   if (loading) {
     return (
       <div className="min-h-screen w-full relative overflow-hidden bg-linear-to-br from-indigo-600 via-purple-600 to-pink-600 flex items-center justify-center px-4">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        </div>
-        <div className="relative backdrop-blur-2xl bg-slate-800/95 border border-white/30 rounded-3xl shadow-2xl p-12">
+        <div className="relative backdrop-blur-lg bg-slate-800/95 border border-white/30 rounded-3xl shadow-2xl p-12">
           <div className="flex flex-col items-center gap-6">
             <div className="w-16 h-16 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
             <p className="text-xl font-bold text-white drop-shadow-lg">Loading comments...</p>
@@ -114,11 +110,7 @@ export default function LabelPage() {
   if (comments.length === 0) {
     return (
       <div className="min-h-screen w-full relative overflow-hidden bg-linear-to-br from-emerald-600 via-teal-600 to-cyan-600 flex items-center justify-center px-4">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        </div>
-        <div className="relative backdrop-blur-2xl bg-slate-800/95 border border-white/30 rounded-3xl shadow-2xl p-12 text-center max-w-md">
+        <div className="relative backdrop-blur-lg bg-slate-800/95 border border-white/30 rounded-3xl shadow-2xl p-12 text-center max-w-md">
           <div className="text-6xl mb-6">🎉</div>
           <h2 className="text-3xl font-black text-white drop-shadow-lg mb-4">All Done!</h2>
           <p className="text-lg text-white drop-shadow mb-6">No more comments available to label. Thank you for your contribution!</p>
@@ -139,15 +131,14 @@ export default function LabelPage() {
   return (
     <div className="min-h-screen w-full relative overflow-hidden bg-linear-to-br from-blue-600 via-indigo-600 to-purple-700">
       {/* Animated Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-2000"></div>
       </div>
 
       {/* Header */}
       <div className="relative max-w-6xl mx-auto pt-8 px-4 mb-8">
-        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-6">
+        <div className="backdrop-blur-lg bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-linear-to-br from-pink-400 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
@@ -179,7 +170,7 @@ export default function LabelPage() {
 
       {/* Progress Bar */}
       <div className="relative max-w-6xl mx-auto px-4 mb-8">
-        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-6">
+        <div className="backdrop-blur-lg bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-6">
           <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-bold text-white drop-shadow uppercase tracking-wider">Progress</span>
             <span className="text-sm font-bold text-white drop-shadow">
@@ -202,11 +193,11 @@ export default function LabelPage() {
 
       {/* Main Content */}
       <div className="relative max-w-6xl mx-auto px-4 pb-12">
-        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-12">
+        <div className="backdrop-blur-lg bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-12">
           {/* Comment Display */}
           <div className="mb-10">
             <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-16 h-16 bg-linear-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="shrink-0 w-16 h-16 bg-linear-to-br from-blue-400 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg">
                 <span className="text-3xl">💬</span>
               </div>
               <div className="flex-1">
@@ -322,46 +313,6 @@ export default function LabelPage() {
           )}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -20px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(20px, 20px) scale(1.05); }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-        .animate-shimmer {
-          animation: shimmer 2s infinite;
-        }
-        @keyframes shake {
-          0%, 100% { transform: translateX(0); }
-          25% { transform: translateX(-10px); }
-          75% { transform: translateX(10px); }
-        }
-        .animate-shake {
-          animation: shake 0.3s;
-        }
-        @keyframes bounce-once {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        .animate-bounce-once {
-          animation: bounce-once 0.5s;
-        }
-      `}</style>
     </div>
   );
 }

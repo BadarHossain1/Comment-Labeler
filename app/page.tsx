@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!name.trim()) {
@@ -21,27 +21,26 @@ export default function Home() {
     
     // Navigate to label page
     router.push('/label');
-  };
+  }, [name, router]);
 
-  const handleNameChange = (value: string) => {
+  const handleNameChange = useCallback((value: string) => {
     setName(value);
     if (error) setError(''); // Clear error when user starts typing
-  };
+  }, [error]);
 
   return (
     <div className="min-h-screen w-full relative overflow-hidden bg-linear-to-br from-violet-600 via-purple-600 to-fuchsia-600">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-2000"></div>
       </div>
 
       {/* Main Content */}
       <div className="relative min-h-screen flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
           {/* Glassmorphism Card */}
-          <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-10 transform hover:scale-[1.02] transition-all duration-300">
+          <div className="backdrop-blur-lg bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-10 transform hover:scale-[1.02] transition-transform duration-300">
             {/* Logo/Icon */}
             <div className="flex justify-center mb-6">
               <div className="w-20 h-20 bg-linear-to-br from-pink-400 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 hover:rotate-6 transition-transform duration-300">
@@ -170,24 +169,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -20px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(20px, 20px) scale(1.05); }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
     </div>
   );
 }
