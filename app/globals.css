@@ -27,26 +27,46 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 12px;
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+* {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #a855f7, #ec4899);
-  border-radius: 10px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
+/* Custom Scrollbar - Desktop Only */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #a855f7, #ec4899);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #9333ea, #db2777);
+    background-clip: padding-box;
+  }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9333ea, #db2777);
-  background-clip: padding-box;
+/* Hide scrollbar on mobile for cleaner look */
+@media (max-width: 767px) {
+  ::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
 }
 
 /* Optimized Animations */

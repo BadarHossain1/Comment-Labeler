@@ -41,33 +41,33 @@ export default function GuidelinesPage() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
-      <div className="relative max-w-6xl mx-auto py-12 px-4">
+      <div className="relative max-w-6xl mx-auto py-6 sm:py-8 lg:py-12 px-4">
         {/* Header Card */}
-        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-12 mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 bg-linear-to-br from-yellow-400 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg transform rotate-3">
-              <span className="text-4xl">📖</span>
+        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12 mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-linear-to-br from-yellow-400 to-orange-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg transform rotate-3">
+              <span className="text-2xl sm:text-4xl">📖</span>
             </div>
             <div>
-              <h1 className="text-3xl sm:text-4xl font-black text-white mb-2">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-1 sm:mb-2">
                 Labeling Guidelines
               </h1>
-              <p className="text-lg text-white/80">FutureEmo-ENG Project</p>
+              <p className="text-sm sm:text-base lg:text-lg text-white/80">FutureEmo-ENG Project</p>
             </div>
           </div>
 
           <div className="space-y-4">
-            <p className="text-lg sm:text-xl text-white drop-shadow leading-relaxed font-semibold">
+            <p className="text-base sm:text-lg lg:text-xl text-white drop-shadow leading-relaxed font-semibold">
               We are labeling <strong className="text-pink-200">future-oriented emotions</strong> in English social media comments. 
               Your task is to identify the primary emotion expressed about future events, possibilities, or outcomes.
             </p>
             
-            <div className="backdrop-blur-md bg-blue-500/30 border-2 border-blue-400/60 rounded-2xl p-6">
-              <div className="flex items-start gap-3">
-                <span className="text-3xl flex-shrink-0">💡</span>
+            <div className="backdrop-blur-md bg-blue-500/30 border-2 border-blue-400/60 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <span className="text-2xl sm:text-3xl flex-shrink-0">💡</span>
                 <div>
-                  <p className="text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-2">Key Principle</p>
-                  <p className="text-white drop-shadow leading-relaxed font-semibold">
+                  <p className="text-xs sm:text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-2">Key Principle</p>
+                  <p className="text-sm sm:text-base text-white drop-shadow leading-relaxed font-semibold">
                     Focus on the <strong>future aspect</strong> of the comment, even if the comment 
                     also discusses the present. If multiple emotions are present, choose the <em className="text-blue-200 font-bold">dominant</em> one.
                   </p>
@@ -78,16 +78,16 @@ export default function GuidelinesPage() {
         </div>
 
         {/* Hope Section */}
-        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-12 mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 bg-linear-to-br from-emerald-400 to-green-600 rounded-2xl flex items-center justify-center shadow-lg">
-              <span className="text-3xl">🌟</span>
+        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12 mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-emerald-400 to-green-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+              <span className="text-2xl sm:text-3xl">🌟</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white">Hope</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white">Hope</h2>
           </div>
           
-          <div className="backdrop-blur-md bg-emerald-500/30 border border-emerald-400/50 rounded-2xl p-6 mb-6">
-            <p className="text-white drop-shadow leading-relaxed text-lg font-semibold">
+          <div className="backdrop-blur-md bg-emerald-500/30 border border-emerald-400/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+            <p className="text-sm sm:text-base lg:text-lg text-white drop-shadow leading-relaxed font-semibold">
               <strong className="text-emerald-200">Definition:</strong> Positive anticipation or optimism about the future. 
               The commenter believes things will improve, expects good outcomes, or expresses 
               confidence that positive changes will occur.
@@ -95,26 +95,26 @@ export default function GuidelinesPage() {
           </div>
 
           <div className="space-y-3">
-            <p className="text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-4">Examples:</p>
+            <p className="text-xs sm:text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-3 sm:mb-4">Examples:</p>
             {examples.hope.map((example, index) => (
-              <div key={index} className="group backdrop-blur-sm bg-emerald-500/30 border-l-4 border-emerald-400 hover:bg-emerald-500/40 rounded-r-2xl p-5 transition-all duration-300 transform hover:translate-x-2">
-                <p className="text-white drop-shadow leading-relaxed italic text-lg font-semibold">"{example}"</p>
+              <div key={index} className="group backdrop-blur-sm bg-emerald-500/30 border-l-4 border-emerald-400 hover:bg-emerald-500/40 rounded-r-xl sm:rounded-r-2xl p-4 sm:p-5 transition-all duration-300 transform hover:translate-x-2">
+                <p className="text-sm sm:text-base lg:text-lg text-white drop-shadow leading-relaxed italic font-semibold break-words">"{example}"</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Fear Section */}
-        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-12 mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 bg-linear-to-br from-red-400 to-red-600 rounded-2xl flex items-center justify-center shadow-lg">
-              <span className="text-3xl">⚠️</span>
+        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12 mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-red-400 to-red-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+              <span className="text-2xl sm:text-3xl">⚠️</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white">Fear</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white">Fear</h2>
           </div>
           
-          <div className="backdrop-blur-md bg-red-500/30 border border-red-400/50 rounded-2xl p-6 mb-6">
-            <p className="text-white drop-shadow leading-relaxed text-lg font-semibold">
+          <div className="backdrop-blur-md bg-red-500/30 border border-red-400/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+            <p className="text-sm sm:text-base lg:text-lg text-white drop-shadow leading-relaxed font-semibold">
               <strong className="text-red-200">Definition:</strong> Worry, anxiety, or concern about what might happen in the future. 
               The commenter expresses apprehension, dread, or negative expectations about future events 
               or outcomes.
@@ -122,26 +122,26 @@ export default function GuidelinesPage() {
           </div>
 
           <div className="space-y-3">
-            <p className="text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-4">Examples:</p>
+            <p className="text-xs sm:text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-3 sm:mb-4">Examples:</p>
             {examples.fear.map((example, index) => (
-              <div key={index} className="group backdrop-blur-sm bg-red-500/20 border-l-4 border-red-400 hover:bg-red-500/30 rounded-r-2xl p-5 transition-all duration-300 transform hover:translate-x-2">
-                <p className="text-white leading-relaxed italic text-lg">"{example}"</p>
+              <div key={index} className="group backdrop-blur-sm bg-red-500/20 border-l-4 border-red-400 hover:bg-red-500/30 rounded-r-xl sm:rounded-r-2xl p-4 sm:p-5 transition-all duration-300 transform hover:translate-x-2">
+                <p className="text-sm sm:text-base lg:text-lg text-white leading-relaxed italic break-words">"{example}"</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Determination Section */}
-        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-12 mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 bg-linear-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
-              <span className="text-3xl">💪</span>
+        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12 mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-blue-400 to-blue-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+              <span className="text-2xl sm:text-3xl">💪</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white">Determination</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white">Determination</h2>
           </div>
           
-          <div className="backdrop-blur-md bg-blue-500/30 border border-blue-400/50 rounded-2xl p-6 mb-6">
-            <p className="text-white drop-shadow leading-relaxed text-lg font-semibold">
+          <div className="backdrop-blur-md bg-blue-500/30 border border-blue-400/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+            <p className="text-sm sm:text-base lg:text-lg text-white drop-shadow leading-relaxed font-semibold">
               <strong className="text-blue-200">Definition:</strong> A firm resolve to take action or pursue a goal in the future. 
               The commenter commits to doing something, expresses willpower, or declares their intention 
               to bring about change.
@@ -149,82 +149,82 @@ export default function GuidelinesPage() {
           </div>
 
           <div className="space-y-3">
-            <p className="text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-4">Examples:</p>
+            <p className="text-xs sm:text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-3 sm:mb-4">Examples:</p>
             {examples.determination.map((example, index) => (
-              <div key={index} className="group backdrop-blur-sm bg-blue-500/20 border-l-4 border-blue-400 hover:bg-blue-500/30 rounded-r-2xl p-5 transition-all duration-300 transform hover:translate-x-2">
-                <p className="text-white leading-relaxed italic text-lg">"{example}"</p>
+              <div key={index} className="group backdrop-blur-sm bg-blue-500/20 border-l-4 border-blue-400 hover:bg-blue-500/30 rounded-r-xl sm:rounded-r-2xl p-4 sm:p-5 transition-all duration-300 transform hover:translate-x-2">
+                <p className="text-sm sm:text-base lg:text-lg text-white leading-relaxed italic break-words">"{example}"</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Neutral Section */}
-        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-12 mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 bg-linear-to-br from-gray-400 to-gray-600 rounded-2xl flex items-center justify-center shadow-lg">
-              <span className="text-3xl">😐</span>
+        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12 mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-gray-400 to-gray-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+              <span className="text-2xl sm:text-3xl">😐</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white">Neutral</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white">Neutral</h2>
           </div>
           
-          <div className="backdrop-blur-md bg-gray-500/30 border border-gray-400/50 rounded-2xl p-6 mb-6">
-            <p className="text-white drop-shadow leading-relaxed text-lg font-semibold">
+          <div className="backdrop-blur-md bg-gray-500/30 border border-gray-400/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6">
+            <p className="text-sm sm:text-base lg:text-lg text-white drop-shadow leading-relaxed font-semibold">
               <strong className="text-gray-200">Definition:</strong> Factual or informational statements about the future without strong emotional content. 
               The commenter simply describes what will happen or might happen, without expressing hope, fear, or determination.
             </p>
           </div>
 
           <div className="space-y-3">
-            <p className="text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-4">Examples:</p>
+            <p className="text-xs sm:text-sm font-bold text-white drop-shadow uppercase tracking-wider mb-3 sm:mb-4">Examples:</p>
             {examples.neutral.map((example, index) => (
-              <div key={index} className="group backdrop-blur-sm bg-gray-500/20 border-l-4 border-gray-400 hover:bg-gray-500/30 rounded-r-2xl p-5 transition-all duration-300 transform hover:translate-x-2">
-                <p className="text-white leading-relaxed italic text-lg">"{example}"</p>
+              <div key={index} className="group backdrop-blur-sm bg-gray-500/20 border-l-4 border-gray-400 hover:bg-gray-500/30 rounded-r-xl sm:rounded-r-2xl p-4 sm:p-5 transition-all duration-300 transform hover:translate-x-2">
+                <p className="text-sm sm:text-base lg:text-lg text-white leading-relaxed italic break-words">"{example}"</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Important Tips */}
-        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-3xl shadow-2xl p-8 sm:p-12 mb-8">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-14 h-14 bg-linear-to-br from-amber-400 to-yellow-600 rounded-2xl flex items-center justify-center shadow-lg">
-              <span className="text-3xl">⭐</span>
+        <div className="backdrop-blur-2xl bg-slate-800/90 border border-white/30 rounded-2xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 lg:p-12 mb-6 sm:mb-8">
+          <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 bg-linear-to-br from-amber-400 to-yellow-600 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg">
+              <span className="text-2xl sm:text-3xl">⭐</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white">Important Tips</h2>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white">Important Tips</h2>
           </div>
 
-          <div className="space-y-4">
-            <div className="backdrop-blur-sm bg-white/10 border border-white/30 rounded-2xl p-5">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0">1️⃣</span>
-                <p className="text-white drop-shadow leading-relaxed text-lg font-semibold">
+          <div className="space-y-3 sm:space-y-4">
+            <div className="backdrop-blur-sm bg-white/10 border border-white/30 rounded-xl sm:rounded-2xl p-4 sm:p-5">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <span className="text-xl sm:text-2xl flex-shrink-0">1️⃣</span>
+                <p className="text-sm sm:text-base lg:text-lg text-white drop-shadow leading-relaxed font-semibold">
                   <strong className="text-white">Future-oriented only:</strong> If a comment is purely about the past or present with no future component, mark it as <strong className="text-amber-300">Skip</strong>.
                 </p>
               </div>
             </div>
 
-            <div className="backdrop-blur-sm bg-white/5 border border-white/20 rounded-2xl p-5">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0">2️⃣</span>
-                <p className="text-white/90 leading-relaxed text-lg">
+            <div className="backdrop-blur-sm bg-white/5 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <span className="text-xl sm:text-2xl flex-shrink-0">2️⃣</span>
+                <p className="text-sm sm:text-base lg:text-lg text-white/90 leading-relaxed">
                   <strong className="text-white">Mixed emotions:</strong> Choose the <strong className="text-amber-300">dominant</strong> emotion. If a comment says "I'm scared but hopeful," decide which feeling is stronger in context.
                 </p>
               </div>
             </div>
 
-            <div className="backdrop-blur-sm bg-white/5 border border-white/20 rounded-2xl p-5">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0">3️⃣</span>
-                <p className="text-white/90 leading-relaxed text-lg">
+            <div className="backdrop-blur-sm bg-white/5 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <span className="text-xl sm:text-2xl flex-shrink-0">3️⃣</span>
+                <p className="text-sm sm:text-base lg:text-lg text-white/90 leading-relaxed">
                   <strong className="text-white">Context matters:</strong> Read the entire comment carefully before deciding. Sometimes the emotion becomes clear only at the end.
                 </p>
               </div>
             </div>
 
-            <div className="backdrop-blur-sm bg-white/5 border border-white/20 rounded-2xl p-5">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl flex-shrink-0">4️⃣</span>
-                <p className="text-white/90 leading-relaxed text-lg">
+            <div className="backdrop-blur-sm bg-white/5 border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-5">
+              <div className="flex items-start gap-2 sm:gap-3">
+                <span className="text-xl sm:text-2xl flex-shrink-0">4️⃣</span>
+                <p className="text-sm sm:text-base lg:text-lg text-white/90 leading-relaxed">
                   <strong className="text-white">Sarcasm and irony:</strong> Label based on the <strong className="text-amber-300">intended meaning</strong>, not the literal words.
                 </p>
               </div>
@@ -236,12 +236,12 @@ export default function GuidelinesPage() {
         <div className="text-center">
           <button
             onClick={() => router.push('/label')}
-            className="group relative overflow-hidden backdrop-blur-md bg-linear-to-r from-pink-500 via-purple-500 to-indigo-600 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-700 border-2 border-white/30 hover:border-white/50 rounded-2xl px-12 py-6 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-2xl hover:shadow-pink-500/50"
+            className="group relative overflow-hidden backdrop-blur-md bg-linear-to-r from-pink-500 via-purple-500 to-indigo-600 hover:from-pink-600 hover:via-purple-600 hover:to-indigo-700 active:from-pink-700 active:via-purple-700 active:to-indigo-800 border-2 border-white/30 hover:border-white/50 rounded-xl sm:rounded-2xl px-8 sm:px-12 py-4 sm:py-6 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-2xl hover:shadow-pink-500/50 w-full sm:w-auto"
           >
-            <span className="relative z-10 text-2xl font-black text-white flex items-center gap-4">
-              <span className="text-3xl">🚀</span>
+            <span className="relative z-10 text-lg sm:text-2xl font-black text-white flex items-center justify-center gap-3 sm:gap-4">
+              <span className="text-2xl sm:text-3xl">🚀</span>
               Start Labeling Now
-              <svg className="w-8 h-8 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </span>
@@ -249,7 +249,7 @@ export default function GuidelinesPage() {
 
           <button
             onClick={() => router.push('/')}
-            className="mt-6 text-white/80 hover:text-white underline underline-offset-4 text-lg font-medium transition-colors"
+            className="mt-5 sm:mt-6 text-white/80 hover:text-white active:text-white/70 underline underline-offset-4 text-base sm:text-lg font-medium transition-colors"
           >
             ← Back to Home
           </button>
